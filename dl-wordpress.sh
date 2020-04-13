@@ -19,14 +19,3 @@ find . -type d -name "feed" -exec rm -r {} +
 find . -type f -name "*?w=*" -delete
 #remove all scripts (read doc at http://fhoerni.free.fr/comp/xslt.html)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
-# only keep the <article> tag
-find -name '*.html' -exec sh -c 'cat \{} | pup 'article' > \{}.new; mv \{}.new \{}' \;
-#remove all data- attributes
-#TODO
-#TODO: merge these 3 in one regexp
-#remove all IDs
-find -name '*.html' -exec sh -c "sed -i 's/\(<[^>]*\) \+id=\"[^\"]*\"\([^>]*>\)/\1\2/' \{}" \;
-#remove all CSS classes
-find -name '*.html' -exec sh -c "sed -i 's/\(<[^>]*\) \+class=\"[^\"]*\"\([^>]*>\)/\1\2/' \{}" \;
-#remove all CSS styles
-find -name '*.html' -exec sh -c "sed -i 's/\(<[^>]*\) \+style=\"[^\"]*\"\([^>]*>\)/\1\2/' \{}" \;
