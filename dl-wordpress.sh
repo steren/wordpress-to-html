@@ -1,9 +1,9 @@
-# for testing only
-#rm -r site
-#cp -r site-backup site
+rm -r site || true
 
 #recursively download the site
-wget --directory-prefix site --no-verbose --no-host-directories --recursive --adjust-extension --page-requisites --convert-links --span-hosts --domains sterenlabs.files.wordpress.com,labs.steren.fr --accept html,svg,jpg,jpeg,png https://labs.steren.fr
+wget --directory-prefix site-backup --no-verbose --no-host-directories --recursive --adjust-extension --page-requisites --convert-links --span-hosts --domains sterenlabs.files.wordpress.com,labs.steren.fr --accept "*.html,*.svg,*.jpg*,*.jpeg*,*.png*,*.gif*" https://labs.steren.fr
+
+cp -r site-backup site
 
 cd site
 # remove non post pages.
@@ -17,5 +17,8 @@ find . -type d -name "amp" -exec rm -r {} +
 find . -type d -name "feed" -exec rm -r {} +
 # new version of wordpress seems to generate thumbnails for images, delete
 find . -type f -name "*?w=*" -delete
-#remove all scripts (read doc at http://fhoerni.free.fr/comp/xslt.html)
+# clean up HTML (see cleanup.xsl)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
+# apply HTML template (see template.xsl)
+find -name '*.html' -exec sh -c 'xsltproc --html ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
+
