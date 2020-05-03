@@ -24,12 +24,14 @@
     <xsl:apply-templates select="*"/>
 </xsl:template>
 
-<!--Empty template to match elements we want to get rid of -->
+<!--Remove elements we want to get rid of -->
 <xsl:template match="script | meta | style | link | noscript | button | input | nav | form"/>
-<!--Empty template to match comments -->
+<!--Remove comments -->
 <xsl:template match="comment()"/>
 <!--Remove unecessary attributes -->
 <xsl:template match="@class | @id | @style"/>
+<!--Remove unecessary wordpress data-* attributes -->
+<xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file"/>
 
 <!-- 
 Remove comments
