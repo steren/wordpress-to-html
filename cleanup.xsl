@@ -24,6 +24,10 @@
     <xsl:apply-templates select="*"/>
 </xsl:template>
 
+<!-- Remove any empty <span> and <p> -->
+<xsl:template match="span[normalize-space()='']"/>
+<xsl:template match="p[normalize-space()='']"/>
+
 <!--Remove elements we want to get rid of -->
 <xsl:template match="script | meta | style | link | noscript | button | input | nav | form"/>
 <!--Remove comments -->
@@ -34,7 +38,12 @@
 <xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file"/>
 
 <!-- 
-Remove tag and category spans
+Remove updated date
+This is likely theme dependent -->
+<xsl:template match="time[@class = 'updated']"/>
+
+<!-- 
+Remove tag and category info
 This is likely theme dependent
 They are spans using class="cat-links" and class="tags-links" in my theme -->
 <xsl:template match="*[@class = 'cat-links'] | *[@class = 'tags-links']"/>
