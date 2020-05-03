@@ -7,7 +7,7 @@
 <!-- Indent -->
 <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />
 
-<!--Identity transform copies all items by default -->
+<!--copies all items by default (this is the XSLT foran Identity :) -->
 <xsl:template match="@* | node()">
     <xsl:copy>
         <xsl:apply-templates select="@* | node()"/>
@@ -19,7 +19,7 @@
   <xsl:apply-templates select="//main"/>
 </xsl:template>
 
-<!-- remove div keep children -->
+<!-- remove <div>, keep children -->
 <xsl:template match="div">
     <xsl:apply-templates select="*"/>
 </xsl:template>
@@ -29,14 +29,20 @@
 <!--Remove comments -->
 <xsl:template match="comment()"/>
 <!--Remove unecessary attributes -->
-<xsl:template match="@class | @id | @style"/>
+<xsl:template match="@class | @id | @style | @rel"/>
 <!--Remove unecessary wordpress data-* attributes -->
 <xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file"/>
 
 <!-- 
-Remove comments
-They are are in <div class="comments-wrapper"> 
+Remove tag and category spans
 This is likely theme dependent
+They are spans using class="cat-links" and class="tags-links" in my theme -->
+<xsl:template match="*[@class = 'cat-links'] | *[@class = 'tags-links']"/>
+
+<!-- 
+Remove comments
+This is likely theme dependent
+They are are in <div class="comments-wrapper"> 
 -->
 <xsl:template match="*[@class = 'comments-wrapper']"/>
 
