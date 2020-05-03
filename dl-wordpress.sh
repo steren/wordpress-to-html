@@ -20,5 +20,5 @@ find . -type f -name "*?w=*" -delete
 # clean up HTML (see cleanup.xsl)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
 # apply HTML template (see template.xsl)
-find -name '*.html' -exec sh -c 'xsltproc --html ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
+find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
