@@ -24,15 +24,16 @@
     <xsl:apply-templates select="*"/>
 </xsl:template>
 
-<!-- Remove any empty <span> and <p> -->
-<xsl:template match="span[normalize-space()='']"/>
-
 <!--Remove elements we want to get rid of -->
 <xsl:template match="script | meta | style | link | noscript | button | input | nav | form"/>
 <!--Remove comments -->
 <xsl:template match="comment()"/>
 <!--Remove most attributes -->
-<xsl:template match="@class | @id | @style | @rel | @srcset | @sizes"/>
+<xsl:template match="@class | @id | @style | @rel"/>
+<!--Remove image srcset attributes -->
+<xsl:template match="@srcset | @sizes"/>
+<!--Remove image width and height, we want to set them using CSS -->
+<xsl:template match="@width | @height"/>
 <!--Remove unecessary wordpress data-* attributes -->
 <xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file | @data-carousel-extra | @data-id"/>
 
