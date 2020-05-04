@@ -11,7 +11,10 @@
 </head>
 <body>
 <main>
+
+<!-- This is where the content will be copied -->
 <xsl:copy-of select="*"/>
+
 </main>
 </body>
 </html>
