@@ -6,8 +6,8 @@
 
 <html lang="en">
 <head>
-  <title>Steren Giannini</title>
-  <link rel="stylesheet" src="style.css" />
+  <title>Steren Labs</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <main>

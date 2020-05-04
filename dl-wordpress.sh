@@ -5,6 +5,7 @@ wget --directory-prefix site-backup --no-verbose --no-host-directories --recursi
 
 cp -r site-backup site
 
+cp style.css site/style.css
 cd site
 # remove non post pages.
 rm -R category comments feed page tag type
@@ -22,3 +23,5 @@ find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; m
 # apply HTML template (see template.xsl)
 find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
+# Start server for dev
+#python -m SimpleHTTPServer
