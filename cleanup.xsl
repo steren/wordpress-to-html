@@ -32,7 +32,7 @@
 <xsl:template match="script | meta | style | link | noscript | button | input | nav | form"/>
 <!--Remove comments -->
 <xsl:template match="comment()"/>
-<!--Remove unecessary attributes -->
+<!--Remove most attributes -->
 <xsl:template match="@class | @id | @style | @rel | @srcset | @sizes"/>
 <!--Remove unecessary wordpress data-* attributes -->
 <xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file | @data-carousel-extra | @data-id"/>
