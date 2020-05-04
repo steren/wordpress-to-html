@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
 <main>
 
 <!-- This is where the content will be copied -->
