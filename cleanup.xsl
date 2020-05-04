@@ -33,9 +33,9 @@
 <!--Remove comments -->
 <xsl:template match="comment()"/>
 <!--Remove unecessary attributes -->
-<xsl:template match="@class | @id | @style | @rel"/>
+<xsl:template match="@class | @id | @style | @rel | @srcset | @sizes"/>
 <!--Remove unecessary wordpress data-* attributes -->
-<xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file"/>
+<xsl:template match="@data-attachment-id | @data-permalink | @data-orig-file | @data-orig-size | @data-image-meta | @data-orig-size | @data-comments-opened | @data-image-description | @data-medium-file | @data-image-title | @data-image-description | @data-large-file | @data-carousel-extra | @data-id"/>
 
 <!-- 
 Remove updated date
@@ -43,7 +43,7 @@ This is likely theme dependent -->
 <xsl:template match="time[@class = 'updated']"/>
 
 <!-- 
-Remove tag and category info
+Remove Wordpress tag and category info
 This is likely theme dependent
 They are spans using class="cat-links" and class="tags-links" in my theme -->
 <xsl:template match="*[@class = 'cat-links'] | *[@class = 'tags-links']"/>
