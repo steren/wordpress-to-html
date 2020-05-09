@@ -23,5 +23,10 @@ find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; m
 # apply HTML template (see template.xsl)
 find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
+# Generate index.html
+echo '<ol>' >> index.html
+find -name '*.html' -exec sh -c "echo '<li><a href=\"{}\">{}</a></li>' >> index.html" \;
+echo '</ol>' >> index.html
+
 # Start server for dev
 #python -m SimpleHTTPServer
