@@ -16,6 +16,5 @@
 ## TODO
 
 - Remove link in title and time
-- Generate index page
 - Clean and format HTML, use http://www.html-tidy.org/ or pup
 - Clean-up images that are not used in `<img>` (but are only here because of `<scrset>`)

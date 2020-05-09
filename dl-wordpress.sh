@@ -23,9 +23,8 @@ find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; m
 # apply HTML template (see template.xsl)
 find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
-# start index.html
+# start an index.html file
 echo '<ol>' > index.html
-
 # Loop over each file and: 
 # - Update their <title>
 # - Add them to index.html
@@ -38,8 +37,11 @@ for i in **/*.html; do
     # Add entry to index.html's list
     echo "<li><a href=\"$i\">$title</a></li>" >> index.html
 done
-
 echo '</ol>' >> index.html
+# Apply index template
+xsltproc ../template-index.xsl index.html > index.html.new; mv index.html.new index.html
+# format index.html
+cat index.html | pup -p > index.html.new && mv index.html.new index.html
 
 # Start server for dev
 #python -m SimpleHTTPServer
