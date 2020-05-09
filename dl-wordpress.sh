@@ -24,7 +24,8 @@ find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; m
 find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
 # start an index.html file
-echo '<ol>' > index.html
+# we'll populate it alphabetically, so oldest will be at the top for now
+echo '</ol>' > index.html.reverse
 # Loop over each file and: 
 # - Update their <title>
 # - Add them to index.html
@@ -35,9 +36,12 @@ for i in **/*.html; do
     # replace <title> in articles
     sed -i "s/___TITLE___/$title/g" $i
     # Add entry to index.html's list
-    echo "<li><a href=\"$i\">$title</a></li>" >> index.html
+    echo "<li><a href=\"$i\">$title</a></li>" >> index.html.reverse
 done
-echo '</ol>' >> index.html
+echo '<ol>' >> index.html.reverse
+# reverse order of all lines, in order to have most recent at the top.
+tac index.html.reverse > index.html
+rm index.html.reverse
 # Apply index template
 xsltproc ../template-index.xsl index.html > index.html.new; mv index.html.new index.html
 # format index.html
