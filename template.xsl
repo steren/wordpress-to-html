@@ -6,7 +6,7 @@
 
 <html lang="en">
 <head>
-  <title>Steren Labs</title>
+  <title>___TITLE___</title>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>

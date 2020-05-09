@@ -23,9 +23,22 @@ find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; m
 # apply HTML template (see template.xsl)
 find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
 
-# Generate index.html
-echo '<ol>' >> index.html
-find -name '*.html' -exec sh -c "echo '<li><a href=\"{}\">{}</a></li>' >> index.html" \;
+# start index.html
+echo '<ol>' > index.html
+
+# Loop over each file and: 
+# - Update their <title>
+# - Add them to index.html
+shopt -s globstar
+for i in **/*.html; do
+    # Extract title (in my case, it's a <h2> in a <header>), clean up newlines and trim whitespaces
+    title=$(cat $i | pup 'header h2 text{}' | tr -d '\n' | xargs)
+    # replace <title> in articles
+    sed -i "s/___TITLE___/$title/g" $i
+    # Add entry to index.html's list
+    echo "<li><a href=\"$i\">$title</a></li>" >> index.html
+done
+
 echo '</ol>' >> index.html
 
 # Start server for dev
