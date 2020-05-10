@@ -22,12 +22,11 @@ find . -type d -name "feed" -exec rm -r {} +
 # clean up HTML (see cleanup.xsl)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
 # apply HTML template (see template.html)
-# we do not use --html because some tags are not supported by xsltproc
 find -name '*.html' -exec sh -c 'cat ../template-header.html \{} ../template-footer.html > \{}.new; mv \{}.new \{}' \;
 
 # start an index.html file
 # we'll populate it alphabetically, so oldest will be at the top for now
-echo '</ol>' > index.html.reverse
+touch index.html.reverse
 
 # Loop over each file and:
 # - Update their <title>
@@ -45,19 +44,15 @@ for i in **/*.html; do
     # Only Title
     #echo "<li><a href=\"${i%index.html}\">$title</a></li>" >> index.html.reverse
     # Image + title
-    # we use &lt; in order to please xsltproc, which doesn like <figure>
-    echo "<li><a href=\"${i%index.html}\"><figure><img loading=\"lazy\" src=\"${i%index.html}$image\" alt=\"$title\"></img><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
+    echo "<li><a href=\"${i%index.html}\"><figure><img loading=\"lazy\" src=\"${i%index.html}$image\" alt=\"$title\"><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
 
 done
-echo '<ol>' >> index.html.reverse
 # reverse order of all lines, in order to have most recent at the top.
 tac index.html.reverse > index.html
 rm index.html.reverse
 
 # Apply index template
-xsltproc ../template-index.xsl index.html > index.html.new; mv index.html.new index.html
-# format index.html
-cat index.html | pup -p > index.html.new && mv index.html.new index.html
+cat ../template-index-header.html index.html ../template-index-footer.html | pup -p > index.html.new; mv index.html.new index.html
 
 # Start server for dev
 python -m SimpleHTTPServer
