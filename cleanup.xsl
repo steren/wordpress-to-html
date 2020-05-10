@@ -7,7 +7,7 @@
 <!-- Indent -->
 <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />
 
-<!--copies all items by default (this is the XSLT foran Identity :) -->
+<!--copies all items by default (this is the XSLT for an Identity :) -->
 <xsl:template match="@* | node()">
     <xsl:copy>
         <xsl:apply-templates select="@* | node()"/>
@@ -21,7 +21,12 @@
 
 <!-- remove <div>, keep children -->
 <xsl:template match="div">
-    <xsl:apply-templates select="*"/>
+    <xsl:apply-templates select="@* | node()"/>
+</xsl:template>
+
+<!-- remove all <a rel="bookmark">, keep children -->
+<xsl:template match="a[@rel = 'bookmark']">
+    <xsl:apply-templates select="@* | node()"/>
 </xsl:template>
 
 <!--Remove elements we want to get rid of -->

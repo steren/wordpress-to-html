@@ -15,5 +15,4 @@
 
 ## TODO
 
-- Remove link in title and time
 - Clean-up images that are not used in `<img>` (but are only here because of `<scrset>`)
