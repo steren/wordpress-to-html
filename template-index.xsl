@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <title>Steren's labs</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/index.css" />
 </head>
 <body>
 <header>
@@ -15,8 +15,10 @@
 </header>
 <main>
 
+<ol class="pages">
 <!-- This is where the content will be copied -->
 <xsl:copy-of select="*"/>
+</ol>
 
 </main>
 </body>

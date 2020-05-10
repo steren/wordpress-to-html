@@ -6,6 +6,7 @@ rm -r site || true
 cp -r site-backup site
 
 cp style.css site/style.css
+cp index.css site/index.css
 cd site
 # remove non post pages.
 rm -R category comments feed page tag type
@@ -28,9 +29,9 @@ find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.
 # we'll populate it alphabetically, so oldest will be at the top for now
 echo '</ol>' > index.html.reverse
 
-echo "Loop over each file and: "
-echo " - Update their <title>"
-echo "- Add them to index.html"
+# Loop over each file and:
+# - Update their <title>
+# - Add them to index.html
 
 shopt -s globstar
 for i in **/*.html; do
@@ -45,7 +46,7 @@ for i in **/*.html; do
     #echo "<li><a href=\"${i%index.html}\">$title</a></li>" >> index.html.reverse
     # Image + title
     # we use &lt; in order to please xsltproc, which doesn like <figure>
-    echo "<li><a href=\"${i%index.html}\"><figure><img src=\"${i%index.html}$image\" alt=\"$title\"></img><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
+    echo "<li><a href=\"${i%index.html}\"><figure><img loading=\"lazy\" src=\"${i%index.html}$image\" alt=\"$title\"></img><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
 
 done
 echo '<ol>' >> index.html.reverse
