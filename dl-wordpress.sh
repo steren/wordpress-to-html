@@ -21,9 +21,9 @@ find . -type d -name "amp" -exec rm -r {} +
 find . -type d -name "feed" -exec rm -r {} +
 # clean up HTML (see cleanup.xsl)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
-# apply HTML template (see template.xsl)
+# apply HTML template (see template.html)
 # we do not use --html because some tags are not supported by xsltproc
-find -name '*.html' -exec sh -c 'xsltproc ../template.xsl \{} > \{}.new; mv \{}.new \{}' \;
+find -name '*.html' -exec sh -c 'cat ../template-header.html \{} ../template-footer.html > \{}.new; mv \{}.new \{}' \;
 
 # start an index.html file
 # we'll populate it alphabetically, so oldest will be at the top for now
