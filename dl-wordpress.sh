@@ -1,3 +1,5 @@
+FUTURE_DOMAIN="https://labs.steren.fr"
+
 rm -r site || true
 
 #recursively download the site
@@ -40,6 +42,8 @@ for i in **/*.html; do
     image=$(cat $i | pup 'img:first-of-type attr{src}' | head -1)
     # replace <title> in articles
     sed -i "s/___TITLE___/$title/g" $i
+    # replace social image in articles
+    sed -i "s,___IMAGE___,$FUTURE_DOMAIN/${i%index.html}$image,g" $i
     # Add entry to index.html's list
     # Only Title
     #echo "<li><a href=\"${i%index.html}\">$title</a></li>" >> index.html.reverse
