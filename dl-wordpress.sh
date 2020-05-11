@@ -3,7 +3,7 @@ FUTURE_DOMAIN="https://labs.steren.fr"
 rm -r site || true
 
 #recursively download the site
-#wget --directory-prefix site-backup --no-verbose --no-host-directories --recursive --adjust-extension --page-requisites --convert-links --span-hosts --domains sterenlabs.files.wordpress.com,labs.steren.fr --accept "html,*.svg,*.jpg*,*.jpeg*,*.png*,*.gif*" https://labs.steren.fr
+wget --directory-prefix site-backup --no-verbose --no-host-directories --recursive --adjust-extension --page-requisites --convert-links --span-hosts --domains sterenlabs.files.wordpress.com,labs.steren.fr --accept "html,*.svg,*.jpg*,*.jpeg*,*.png*,*.gif*" https://labs.steren.fr
 
 cp -r site-backup site
 
@@ -59,4 +59,4 @@ rm index.html.reverse
 cat ../template-index-header.html index.html ../template-index-footer.html | pup -p > index.html.new; mv index.html.new index.html
 
 # Start server for dev
-python -m SimpleHTTPServer
+#python -m SimpleHTTPServer
