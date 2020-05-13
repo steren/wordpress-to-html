@@ -30,5 +30,4 @@ Customze your articles style in `style.css` and the index style in the `<style>`
 
 ## TODO
 
-- Add blog title as variable.
 - Clean-up images that are not used in `<img>` (but are only here because of `<scrset>`)
