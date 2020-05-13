@@ -1,4 +1,5 @@
 FUTURE_DOMAIN="https://labs.steren.fr"
+BLOG_TITLE="Steren's blog"
 
 rm -r site || true
 
@@ -20,6 +21,7 @@ find . -type d -name "amp" -exec rm -r {} +
 find . -type d -name "feed" -exec rm -r {} +
 # clean up HTML (see cleanup.xsl)
 find -name '*.html' -exec sh -c 'xsltproc --html ../cleanup.xsl \{} > \{}.new; mv \{}.new \{}' \;
+echo "(Ignore the many errors above, they are expected)"
 # apply HTML template (see template.html)
 find -name '*.html' -exec sh -c 'cat ../template-header.html \{} ../template-footer.html > \{}.new; mv \{}.new \{}' \;
 
@@ -43,9 +45,9 @@ for i in **/*.html; do
     sed -i "s,___IMAGE___,$FUTURE_DOMAIN/${i%index.html}$image,g" $i
     # Add entry to index.html's list
     # Only Title
-    #echo "<li><a href=\"${i%index.html}\">$title</a></li>" >> index.html.reverse
+    echo "<li><a href=\"${i%index.html}\">$title</a></li>" >> index.html.reverse
     # Image + title
-    echo "<li><a href=\"${i%index.html}\"><figure><img loading=\"lazy\" src=\"${i%index.html}$image\" alt=\"$title\"><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
+    # echo "<li><a href=\"${i%index.html}\"><figure><img loading=\"lazy\" src=\"${i%index.html}$image\" alt=\"$title\"><figcaption>$title</figcaption></figure></a></li>" >> index.html.reverse
 
 done
 # reverse order of all lines, in order to have most recent at the top.
@@ -54,6 +56,11 @@ rm index.html.reverse
 
 # Apply index template
 cat ../template-index-header.html index.html ../template-index-footer.html | pup -p > index.html.new; mv index.html.new index.html
+
+# Update blog title
+sed -i "s/___BLOG_TITLE___/$BLOG_TITLE/g" **/*.html
+
+echo "Cleanup completed. Starting web server for preview:"
 
 # Start server for dev
 python -m SimpleHTTPServer
