@@ -1,5 +1,4 @@
-FUTURE_DOMAIN="https://labs.steren.fr"
-BLOG_TITLE="Steren's blog"
+#!/bin/bash
 
 rm -r site || true
 

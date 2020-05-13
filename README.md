@@ -14,13 +14,17 @@
 
 ## Downloading and cleanup your Wordpress blog
 
-1. Run `./dl-wordpress.sh` to download your side
+1. Open the `config` file and update with your info
 
-2. Run `./cleanup.sh` to generate a clean-up version of it and start a preview server.
+2. Load the config with `source ./config`
+
+3. Run `./dl-wordpress.sh` to download your side
+
+4. Run `./cleanup.sh` to generate a clean-up version of it and start a preview server.
 
 Your site is now in the `site` folder.
 
-Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page) as well as customize the s
+Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page). After doing so, re-run step 4. above.
 
 Customze your articles style in `style.css` and the index style in the `<style>` tag of `template-index-header.html`.
 

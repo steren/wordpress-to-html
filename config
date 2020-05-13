@@ -1,0 +1,4 @@
+export BLOG_DOMAIN="blog.steren.fr"
+export FILES_DOMAIN="sterenblog.files.wordpress.com"
+export FUTURE_DOMAIN="https://$BLOG_DOMAIN"
+export BLOG_TITLE="Steren's blog"

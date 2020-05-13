@@ -1,5 +1,4 @@
-BLOG_DOMAIN="blog.steren.fr"
-FILES_DOMAIN="sterenblog.files.wordpress.com"
+#!/bin/bash
 
 rm -r site-backup || true
 
