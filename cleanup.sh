@@ -60,7 +60,8 @@ cat ../template-index-header.html index.html ../template-index-footer.html | pup
 sed -i "s/___BLOG_TITLE___/$BLOG_TITLE/g" **/*.html
 sed -i "s/___BLOG_TAGLINE___/$BLOG_TAGLINE/g" **/*.html
 sed -i "s/___BLOG_AUTHOR___/$BLOG_AUTHOR/g" **/*.html
-sed -i "s/___FUTURE_DOMAIN___/$FUTURE_DOMAIN/g" **/*.html
+sed -i "s/___BLOG_AUTHOR_TWITTER___/$BLOG_AUTHOR_TWITTER/g" **/*.html
+sed -i "s,___FUTURE_DOMAIN___,$FUTURE_DOMAIN,g" **/*.html
 
 echo "Cleanup completed. Starting web server for preview:"
 

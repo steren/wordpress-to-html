@@ -50,7 +50,7 @@ body{
   font-size:1rem;
 }
 
-ol.pages  {
+.pages.grid  {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -61,15 +61,18 @@ ol.pages  {
 
 .pages li {
   list-style-type: none;
+}
+
+.pages.grid li {
   width: 400px;
   height: 400px;
 }
 
-.pages figure {
+.pages.grid figure {
   margin: 0;
 }
 
-.pages img {
+.pages.grid img {
   width: 400px;
   height: 300px;
   object-fit: cover;
@@ -78,7 +81,6 @@ ol.pages  {
 .pages a,
 .pages a:visited {
   color: #000000;
-  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {

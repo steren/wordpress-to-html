@@ -3,6 +3,7 @@
 ## Preparing your blog for download
 
 - This tool is optimized for the theme "Revelar", [enable it](https://wordpress.com/theme/revelar) for maximum compatibility
+- If you want featured images, enable it at `https://wordpress.com/customize/YOUR-BLOG`  then "Content Options"
 - Hide comments: 
   * `/wp-admin/edit.php`
   * Select all
@@ -28,7 +29,11 @@ These instructions have only been tested on Linux.
 
 Your site is now in the `site` folder.
 
+Open index.html and manually remove the `<li>` that do not point to articles but to full page gallery images.
+
 Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page). After doing so, re-run step 4. above.
+
+Notably, if you want a image grid layout for your index page, replace `<ol class="pages">` with `<ol class="pages grid">` in `template-index-header.html` and enable 
 
 Customze your articles style in `style.css` and the index style in the `<style>` tag of `template-index-header.html`.
 
