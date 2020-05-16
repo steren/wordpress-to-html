@@ -1,15 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>___BLOG_TITLE___</title>
+ <head>
+  <title>
+    ___BLOG_TITLE___
+  </title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/index.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="___BLOG_TAGLINE___">
+  <meta name="author" content="___BLOG_AUTHOR___">
+  
   <link rel="icon" sizes="32x32" href="/icon-32.png">
-</head>
-<body>
-<header>
-<h1>___BLOG_TITLE___</h1>
-</header>
-<main>
 
-<ol class="pages">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="___BLOG_AUTHOR_TWITTER___">
+  <meta name="twitter:title" content="___BLOG_TITLE___">
+  <meta name="twitter:description" content="___BLOG_TAGLINE___">
+  <!-- <meta name="twitter:image" content="___FUTURE_DOMAIN___"> -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="___BLOG_TITLE___">
+  <meta property="og:description" content="___BLOG_TAGLINE___">
+  <meta property="og:url" content="___FUTURE_DOMAIN___">
+  <!-- <meta property="og:image" content="___FUTURE_DOMAIN___"> -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Blog",
+    "author": "___BLOG_AUTHOR___",
+    "name": "___BLOG_TITLE___",
+    "description": "___BLOG_TAGLINE___"
+  }
+  </script>
+
+ <style>
+html {
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  line-height: 1.4;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #121212;
+    color: #FFFFFF;
+  }
+}
+
+body{
+  margin:1.2em;
+  font-size:1rem;
+}
+
+ol.pages  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.pages li {
+  list-style-type: none;
+  width: 400px;
+  height: 400px;
+}
+
+.pages figure {
+  margin: 0;
+}
+
+.pages img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.pages a,
+.pages a:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pages a,
+  .pages a:visited {
+    color: #FFFFFF;
+  }
+}
+ </style>
+ </head>
+ <body>
+  <header>
+   <h1>
+    ___BLOG_TITLE___
+   </h1>
+   <p>___BLOG_TAGLINE___</p>
+  </header>
+  <main>
+   <ol class="pages">

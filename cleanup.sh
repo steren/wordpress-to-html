@@ -56,8 +56,11 @@ rm index.html.reverse
 # Apply index template
 cat ../template-index-header.html index.html ../template-index-footer.html | pup -p > index.html.new; mv index.html.new index.html
 
-# Update blog title
+# Update blog title, tagline and author
 sed -i "s/___BLOG_TITLE___/$BLOG_TITLE/g" **/*.html
+sed -i "s/___BLOG_TAGLINE___/$BLOG_TAGLINE/g" **/*.html
+sed -i "s/___BLOG_AUTHOR___/$BLOG_AUTHOR/g" **/*.html
+sed -i "s/___FUTURE_DOMAIN___/$FUTURE_DOMAIN/g" **/*.html
 
 echo "Cleanup completed. Starting web server for preview:"
 
