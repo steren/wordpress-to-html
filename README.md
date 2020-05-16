@@ -14,6 +14,10 @@
 
 ## Downloading and cleanup your Wordpress blog
 
+These instructions have only been tested on Linux.
+
+0. Install [pup](https://github.com/ericchiang/pup), the easiest is to run `curl -sf https://gobinaries.com/ericchiang/pup | sh` 
+
 1. Open the `config` file and update with your info
 
 2. Load the config with `source ./config`
