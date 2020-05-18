@@ -4,6 +4,8 @@ This script will download your Wordpress blog on your local machine, and optionn
 
 This is how I exported my personal blogs from wordpress.com to pure HTML+CSS versions ([example](https://github.com/steren/labs) and [another example](https://github.com/steren/blog).
 
+My main motivation was to improve 
+
 ***Warning**: I sincerely recommend not to use this tool. It is likely that it won't work as you expect, and trying to debug why might make you crazy (mostly due to the use of XSLT to cleanup the HTML)* 
 
 ## Preparing your blog for download
@@ -31,6 +33,16 @@ These instructions have only been tested on Linux.
 6. Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page). After doing so, re-run step 4. above. Notably, if you want a image grid layout for your index page, replace `<ol class="pages">` with `<ol class="pages grid">` in `template-index-header.html` and enable 
 
 Customze your articles style in `style.css` and the index style in the `<style>` tag of `template-index-header.html`.
+
+## After exporting to HTML
+
+After you've exported your blog, to create new article, you will need to copy paste an existing article, as well as manually update `index.html` with a link to the article.
+
+To make markup changes to your article headers and footers, you will need to use the "Find and Replace in files"feature of your favorite IDE.
+
+## Hosting your blog
+
+Because your blog is now just plain HTML and CSS. You can host it anywhere that is able to serve static files. GitHub pages are great for that, as it allows you to directly publish your blog from where you version its code (GitHub).
 
 ## TODO
 
