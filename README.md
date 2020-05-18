@@ -4,7 +4,15 @@ This script will download your Wordpress blog on your local machine, and optionn
 
 This is how I exported my personal blogs from wordpress.com to pure HTML+CSS versions ([example](https://github.com/steren/labs) and [another example](https://github.com/steren/blog).
 
-My main motivation was to improve 
+My main motivation was to improve performances of my blog, as well as stop paying for a custom domain or any hostign fee.
+
+It went from this a 19/100 Performance score, tons of injected JavaScript and an unreadable markup:
+
+![before](https://user-images.githubusercontent.com/360895/82164727-dc664f00-9866-11ea-9e30-c65ba5ee25a0.png)
+
+To 100/100 Performance score and super clearn markup:
+
+![after](https://user-images.githubusercontent.com/360895/82164741-f142e280-9866-11ea-9448-fc7d96461431.png)
 
 ***Warning**: I sincerely recommend not to use this tool. It is likely that it won't work as you expect, and trying to debug why might make you crazy (mostly due to the use of XSLT to cleanup the HTML)* 
 
