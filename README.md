@@ -1,17 +1,16 @@
 # Wordpress HTML download
 
+This script will download your Wordpress blog on your local machine, and optionnally generate a clean-up version of it.
+
+This is how I exported my personal blogs from wordpress.com to pure HTML+CSS versions ([example](https://github.com/steren/labs) and [another example](https://github.com/steren/blog).
+
+***Warning**: I sincerely recommend not to use this tool. It is likely that it won't work as you expect, and trying to debug why might make you crazy (mostly due to the use of XSLT to cleanup the HTML)* 
+
 ## Preparing your blog for download
 
 - This tool is optimized for the theme "Revelar", [enable it](https://wordpress.com/theme/revelar) for maximum compatibility
 - If you want featured images, enable it at `https://wordpress.com/customize/YOUR-BLOG`  then "Content Options"
-- Hide comments: 
-  * `/wp-admin/edit.php`
-  * Select all
-  * Bulk Actions > Edit
-  * Comments > Do not allow
-  * Apply
 - Remove sharing actions: `/wp-admin/options-general.php?page=sharing` or `https://wordpress.com/marketing/sharing-buttons/YOUR-BLOG`
-
 
 ## Downloading and cleanup your Wordpress blog
 
@@ -23,17 +22,13 @@ These instructions have only been tested on Linux.
 
 2. Load the config with `source ./config`
 
-3. Run `./dl-wordpress.sh` to download your side
+3. Run `./dl-wordpress.sh` to download your site in a folder named `site-backup`.
 
-4. Run `./cleanup.sh` to generate a clean-up version of it and start a preview server.
+4. Run `./cleanup.sh` to generate a clean-up version of it in a folder named `site` and start a preview server.
 
-Your site is now in the `site` folder.
+5. Open index.html and manually remove the `<li>` that do not point to articles but to full page gallery images.
 
-Open index.html and manually remove the `<li>` that do not point to articles but to full page gallery images.
-
-Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page). After doing so, re-run step 4. above.
-
-Notably, if you want a image grid layout for your index page, replace `<ol class="pages">` with `<ol class="pages grid">` in `template-index-header.html` and enable 
+6. Feel free to edit the HTML templates (Edit `template-header.html` for articles and `template-index-header.html` for the index page). After doing so, re-run step 4. above. Notably, if you want a image grid layout for your index page, replace `<ol class="pages">` with `<ol class="pages grid">` in `template-index-header.html` and enable 
 
 Customze your articles style in `style.css` and the index style in the `<style>` tag of `template-index-header.html`.
 
