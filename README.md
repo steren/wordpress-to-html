@@ -12,7 +12,7 @@ To 100/100 Performance score and super clearn markup:
 
 ![after](https://user-images.githubusercontent.com/360895/82164741-f142e280-9866-11ea-9448-fc7d96461431.png)
 
-***Warning**: I sincerely recommend not to use this tool. It is likely that it won't work as you expect, and trying to debug why might make you crazy (mostly due to the use of XSLT to cleanup the HTML)* 
+***Don't try this at home**:  I sincerely recommend not to use this tool. It is likely that it won't work as you expect, and trying to debug might make you crazy (mostly due to the use of XSLT to cleanup the HTML)* 
 
 ## Preparing your blog for download
 
